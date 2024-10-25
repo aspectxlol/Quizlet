@@ -1,3 +1,7 @@
-<h1>Welcome to your library project</h1>
-<p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<head>
+  <title>Quizlet</title>
+</head>
+
+<div class="flex flex-col items-center justify-center h-screen">
+  <h1 class="text-9xl text-center font-bold">Hello, Welcome to my little site!</h1>
+</div>
