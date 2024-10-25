@@ -1,7 +1,23 @@
-<head>
-  <title>Quizlet</title>
-</head>
+<script lang="ts">
+  import { onMount } from 'svelte';
+	import { getSocket } from '../utils/socket.js';
+  import { socket } from '../store/socket.js';
+
+  onMount(async () => {
+    await getSocket();
+  });
+
+  let socketId = $state<string | undefined>('');
+  socket.subscribe((socket) => {
+    if (socket) {
+      if (socket.active) {
+        socket.emit('join', 'quizlet');
+      }
+    }
+  });
+
+</script>
 
 <div class="flex flex-col items-center justify-center h-screen">
-  <h1 class="text-9xl text-center font-bold">Hello, Welcome to my little site!</h1>
+  <p class="text-center font-bold text-8xl">{socketId}</p>
 </div>
