@@ -1,0 +1,35 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      - PORT=3000
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+  db:
+    image: postgres:15.4
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=B9jJfFXu7z5
+      - POSTGRES_DB=quizlet
+    ports:
+      - 5432:5432
+  db-redis:
+    image: redis:7.0.11
+    ports:
+      - 6379:6379
+  storage:
+    image: minio/minio
+    command: minio server /data
+    ports:
+      - 9000:9000
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin

@@ -4,10 +4,13 @@ WORKDIR /app
 
 COPY package.json ./
 
-RUN npm install && npm install typescript ts-node
+RUN corepack enable
+RUN yarn && yarn add typescript tsx
+# RUN yarn remove esbuild
+# RUN yarn add esbuild
 
 COPY . .
 
 EXPOSE 3000
 
-CMD [ "npm", "run", "start" ]
+CMD [ "yarn", "run", "start" ]
