@@ -6,8 +6,6 @@ COPY package.json ./
 
 RUN corepack enable
 RUN yarn && yarn add typescript tsx
-# RUN yarn remove esbuild
-# RUN yarn add esbuild
 
 COPY . .
 
